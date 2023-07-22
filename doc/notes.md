@@ -67,3 +67,61 @@ In Haskell Indentation is important because it continues an existsing definiitio
 shortcircuit a b = if a then a else b 
 ```
 in this exaple b can be infinite
+
+---
+## Chapter 3
+
+```
+data BookInfo = Book Int String [String]
+                deriving (Show)
+```
+
+`BookInfo` = type constructor
+`Book` = value constructor (data constructor) -> we use this to create a BookInfo type
+
+`Int`, `String`, `[String]` are the components of the type (fields)
+
+/!\ We can use a value constructor as a function. Value constructor and type constructor can have same name
+
+The (==) operator requires its arguments to have the same type
+
+A `tuple` can be analogous to use `data` but:
+
+```
+ if you're using compound values widely in your code (as almost all non-trivial programs do), adding data declarations will benefit you in both type safety and readability. For smaller, localised uses, a tuple is usually fine.
+ ```
+
+ `data` is comparable with: `Enums`, `struct`
+
+ ### Pattern matching
+
+ ```
+ -- file: ch03/add.hs
+sumList (x:xs) = x + sumList xs
+sumList []     = 0
+```
+
+Order of pattern matching is important
+
+If we do not match all the patterns compilers warns us with Non-exhaustive patters (e.g: forgot [])
+
+### Parameterised types
+
+When we put `a` in value constructor we say we have a polymorphic type
+
+```
+data Maybe a = Just a
+              | Nothing
+```
+a is a type vairable
+
+parameterised types are almost the Templates in C++, generics to Java
+
+
+### Recursvie types
+
+```
+data List a = Cons a (List a)
+            | Nil
+            deriving (Show)
+```
