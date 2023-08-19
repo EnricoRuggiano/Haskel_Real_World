@@ -5,3 +5,8 @@ data Tree a = Node a (Tree a) (Tree a)
 
 simpleTree = Node "parent" (Node "left child" Empty Empty)
                            (Node "right child" Empty Empty)
+
+
+nodesAreSame ( Node a _ _ ) ( Node b _ _) 
+  | a == b  = Just a
+nodesAreSame  _ _ = Nothing

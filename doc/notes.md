@@ -125,3 +125,19 @@ data List a = Cons a (List a)
             | Nil
             deriving (Show)
 ```
+
+### Partial Function vs Total Functions
+
+Functions that only have return values defined for a subset of valid inputs are called partial functions (calling error doesn't qualify as returning a value!). We call functions that return valid results over their entire input domains total functions
+
+e.g: `head` is partial
+
+```
+mySmartExample xs = if not (null xs)
+                    then head xs
+                    else 'Z'
+
+myOtherExample (x:_) = x
+myOtherExample [] = 'Z'
+```
+`mySmartExample` is total

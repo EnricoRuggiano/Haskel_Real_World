@@ -19,3 +19,13 @@ myMean t = if null t
         else
             fromIntegral(mySum(t)) / fromIntegral(myLength(t))
 
+myPal [] = []
+myPal [x] = [x]++ myPal [] ++ [x]
+myPal (x:xs) = [x] ++ myPal xs ++ [x]
+
+myIntersperse _ []  = []
+myIntersperse a l   = 
+  case length l of
+    0 -> []
+    1 -> head l
+    n -> head l ++ [a] ++ myIntersperse a (tail l)
